@@ -3,6 +3,11 @@ import numpy as np
 
 cap = cv2.VideoCapture(0)
 
+cap.set(cv2.CAP_PROP_FRAME_WIDTH,320)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT,240)
+cap.set(cv2.CAP_PROP_FPS,120)
+print("FPS", cap.get(cv2.CAP_PROP_FPS))
+
 while(1):
 
     # Take each frame
@@ -15,8 +20,8 @@ while(1):
     lower_blue = np.array([90,64,98])
     upper_blue = np.array([145,255,255])
 
-    lower_red = np.array([98, 64, 90])
-    upper_red = np.array([255, 255, 145])
+    lower_red = np.array([0, 0, 0])
+    upper_red = np.array([19, 255, 255])
 
     red_mask = cv2.inRange(hsv, lower_red, upper_red)
     # Threshold the HSV image to get only blue colors
